@@ -1,66 +1,71 @@
 {
-  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
-  "manifestVersion": "1.5",
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.7",
   "version": "1.0.0",
-  "id": "cb57ea19-7ab5-454f-ab1e-844f390374ac",
-  "packageName": "com.teams.sample.teamsconversationbot",
+  "id": "2e9d20a4-2156-4479-8e2f-5a48f54fccef",
+  "packageName": "com.infosys.bot",
   "developer": {
-    "name": "teamsConversationBot",
-    "websiteUrl": "https://www.microsoft.com",
-    "privacyUrl": "https://www.teams.com/privacy",
-    "termsOfUseUrl": "https://www.teams.com/termsofuser"
+      "name": "Infosys",
+      "websiteUrl": "https://www.infosys.com/",
+      "privacyUrl": "https://www.infosys.com/privacy-statement.html",
+      "termsOfUseUrl": "https://www.infosys.com/terms-of-use.html"
   },
   "icons": {
-    "outline": "icon-outline.png",
-    "color": "icon-color.png"
+      "color": "color.png",
+      "outline": "outline.png"
   },
   "name": {
-    "short": "TeamsConversationBot",
-    "full": "TeamsConversationBot"
+      "short": "RemedyConversationBot",
+      "full": "RemedyConversationBot"
   },
   "description": {
-    "short": "TeamsConversationBot",
-    "full": "TeamsConversationBot"
+      "short": "or integrating remedy with MS Teams",
+      "full": "This is a sample bot which will fetch the messages from MS Teams and update the incident's worklog"
   },
   "accentColor": "#FFFFFF",
+  "configurableTabs": [
+  {
+    "configurationUrl": "https://remedyconversationbot.azurewebsites.net/api/messages/tab/tabConfig/index.html",
+    "canUpdateConfiguration": false,
+    "scopes": [ "team", "groupchat" ]
+  }
+],
+  "staticTabs": [
+  {
+    "contentUrl": "https://remedyconversationbot.azurewebsites.net/api/messages/loading",
+    "entityId": "1on1test123",
+    "name": "Bot Info",
+    "scopes": [
+      "team",
+      "personal"
+    ]
+  },
+ {
+    "contentUrl": "https://remedyconversationbot.azurewebsites.net/api/messages/tab-auth/silent",
+    "entityId": "silentAuth",
+    "name": "Silent Auth",
+    "scopes": [
+      "personal"
+    ]
+  }
+],
   "bots": [
-    {
-      "botId": "<<YOUR-MICROSOFT-APP-ID>>",
-      "scopes": [
-        "personal",
-        "groupchat",
-        "team"
-      ],
-      "supportsFiles": false,
-      "isNotificationOnly": false,
-      "commandLists": [
-        {
+      {
+          "botId": "cb57ea19-7ab5-454f-ab1e-844f390374ac",
           "scopes": [
-            "personal",
-            "groupchat",
-            "team"
+              "team",
+              "groupchat",
+              "personal"
           ],
-          "commands": [
-            {
-              "title": "MentionMe",
-              "description": "Sends message with @mention of the sender"
-            },
-            {
-              "title": "Show Welcome",
-              "description": "Shows the welcome card"
-            },
-            {
-              "title": "MessageAllMembers",
-              "description": "Send 1 to 1 message to all members of the current conversation"
-            }
-          ]
-        }
-      ]
-    }
+          "supportsFiles": true,
+          "isNotificationOnly": false
+      }
   ],
   "permissions": [
-    "identity",
-    "messageTeamMembers"
+      "identity",
+      "messageTeamMembers"
   ],
-  "validDomains": []
+  "validDomains": [
+"remedyconversationbot.azurewebsites.net"
+]
 }
